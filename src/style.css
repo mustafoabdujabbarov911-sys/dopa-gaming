@@ -1,1 +1,52 @@
 @import "tailwindcss";
+
+/* Дизайн-токены (ТЗ §4). Классы: bg-bg, text-main, text-vip, text-price, font-display, font-body */
+@theme {
+  --color-bg: #0b0d14;
+  --color-main: #f59e0b; /* зона MAIN — тёплый */
+  --color-vip: #8b9cff; /* зона VIP — холодный */
+  --color-vip-2: #60a5fa;
+  --color-price: #f5c542; /* цены — золото */
+
+  --font-display: "Unbounded Variable", system-ui, sans-serif;
+  --font-body: "Montserrat Variable", system-ui, sans-serif;
+
+  --radius-glass: 1.75rem;
+}
+
+/* Стекло: класс .glass. Не больше 3–4 слоёв на экране, blur не анимировать. */
+@utility glass {
+  background-color: rgb(255 255 255 / 0.08);
+  border: 1px solid rgb(255 255 255 / 0.15);
+  border-radius: var(--radius-glass);
+  box-shadow: 0 8px 32px rgb(0 0 0 / 0.35);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+
+  @supports not (backdrop-filter: blur(1px)) {
+    background-color: rgb(0 0 0 / 0.6);
+  }
+}
+
+/* Неоновое свечение заголовков MAIN / VIP */
+@utility text-glow {
+  text-shadow: 0 0 24px rgb(255 255 255 / 0.6);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
