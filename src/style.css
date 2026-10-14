@@ -50,3 +50,231 @@
     }
   }
 }
+:root {
+    --bg-main: #0B0D14;
+    --accent-amber: #F59E0B;
+    --accent-gold: #F5C542;
+    --glass-bg: rgba(255, 255, 255, 0.08);
+    --glass-border: rgba(255, 255, 255, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: #ffffff;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Шапка сайта */
+.glass-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 12px 16px;
+}
+
+.glass-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    background: var(--glass-bg);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    box-shadow: var(--glass-shadow);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+/* Логотип */
+.logo {
+    font-size: 1.25rem;
+    font-weight: 900;
+    letter-spacing: 1px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--accent-amber);
+    text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+/* Навигация (ПК) */
+.nav-links {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #ffffff;
+}
+
+/* Правая панель */
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+/* Переключатель языка */
+.lang-switch {
+    display: flex;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 9999px;
+    padding: 3px;
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: #9ca3af;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.lang-btn.active {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Кнопка «Забронировать» */
+.btn-booking {
+    background: linear-gradient(135deg, #F59E0B, #EA580C);
+    color: #000000;
+    font-weight: 700;
+    padding: 10px 22px;
+    border-radius: 9999px;
+    text-decoration: none;
+    font-size: 0.875rem;
+    box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.btn-booking:hover {
+    opacity: 0.95;
+    transform: scale(1.03);
+}
+
+/* Бургер-кнопка */
+.burger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+.burger-btn svg {
+    width: 28px;
+    height: 28px;
+}
+
+/* Мобильное меню */
+.mobile-menu {
+    display: none;
+    max-width: 1280px;
+    margin: 8px auto 0 auto;
+    background: rgba(11, 13, 20, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 20px;
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+    box-shadow: var(--glass-shadow);
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+.mobile-link {
+    color: #d1d5db;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    padding: 6px 0;
+}
+
+.mobile-lang {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-btn-block {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+/* Плашка тарифа под шапкой */
+.tariff-status-section {
+    max-width: 1280px;
+    margin: 16px auto 0 auto;
+    padding: 0 16px;
+}
+
+.tariff-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--accent-gold);
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: var(--accent-amber);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-amber);
+    animation: pulse 1.5s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+    100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .nav-links, .header-right {
+        display: none;
+    }
+    .burger-btn {
+        display: block;
+    }
+}

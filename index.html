@@ -10,8 +10,71 @@
     />
     <meta name="theme-color" content="#0b0d14" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="style.css">
   </head>
   <body class="bg-bg font-body text-white antialiased">
+    <header class="glass-header">
+        <div class="glass-container">
+            
+            <!-- Логотип -->
+            <a href="#" class="logo">DOPA <span>GAMING</span></a>
+
+            <!-- Навигация (Десктоп) -->
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#zones">Зоны</a></li>
+                    <li><a href="#prices">Цены</a></li>
+                    <li><a href="#hardware">Железо</a></li>
+                    <li><a href="#address">Адрес</a></li>
+                </ul>
+            </nav>
+
+            <!-- Правая часть: Переключатель языка и кнопка -->
+            <div class="header-right">
+                <!-- Переключатель RU / UZ -->
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="ru" onclick="switchLang('ru')">RU</button>
+                    <button class="lang-btn" data-lang="uz" onclick="switchLang('uz')">UZ</button>
+                </div>
+
+                <!-- Кнопка Забронировать -->
+                <a href="https://t.me/your_telegram" target="_blank" class="btn-booking">Забронировать</a>
+            </div>
+
+            <!-- Кнопка мобильного меню (Бургер) -->
+            <button class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Выпадающее мобильное меню -->
+        <div class="mobile-menu" id="mobileMenu">
+            <a href="#zones" class="mobile-link">Зоны</a>
+            <a href="#prices" class="mobile-link">Цены</a>
+            <a href="#hardware" class="mobile-link">Железо</a>
+            <a href="#address" class="mobile-link">Адрес</a>
+            
+            <div class="mobile-lang">
+                <button class="lang-btn active" onclick="switchLang('ru')">RU</button>
+                <button class="lang-btn" onclick="switchLang('uz')">UZ</button>
+            </div>
+
+            <a href="https://t.me/your_telegram" target="_blank" class="btn-booking mobile-btn-block">Забронировать</a>
+        </div>
+    </header>
+
+    <!-- ПЛАШКА ТЕКУЩЕГО ТАРИФА (по ТЗ: JS по текущему времени Ташкента) -->
+    <section class="tariff-status-section">
+        <div class="glass-container tariff-banner">
+            <div class="pulse-dot"></div>
+            <span id="tariffText">Определяем текущий тариф...</span>
+        </div>
+    </section>
+
+    <!-- Подключаем скрипт -->
+    <script src="script.js"></script>
     <main id="app"></main>
     <script type="module" src="/src/main.js"></script>
   </body>
