@@ -112,17 +112,19 @@
         </div>
     </div>
 </section>
-  <!-- СЕКЦИЯ ЦЕНЫ -->
+ <!-- СЕКЦИЯ ЦЕНЫ -->
 <section id="prices" class="py-12 px-4 max-w-4xl mx-auto">
   <div class="text-center mb-8">
     <h2 class="text-4xl font-extrabold font-display tracking-wider mb-2">ЦЕНЫ</h2>
     <p class="text-xs text-gray-400 tracking-widest uppercase">сум • 24/7</p>
     
-    <!-- Шапка зон -->
-    <div class="flex justify-end gap-6 md:gap-12 text-sm font-bold mt-6 px-6">
-      <span class="text-amber-500 w-20 text-center">MAIN</span>
-      <span class="text-emerald-400 w-20 text-center">COMFORT</span>
-      <span class="text-amber-300 w-20 text-center">VIP</span>
+    <!-- Шапка зон через сетку -->
+    <div class="flex justify-end mt-6 px-6">
+      <div class="grid grid-cols-3 w-full max-w-md text-center text-sm font-bold">
+        <span class="text-amber-500">MAIN</span>
+        <span class="text-emerald-400">COMFORT</span>
+        <span class="text-amber-300">VIP</span>
+      </div>
     </div>
   </div>
 
@@ -135,20 +137,20 @@
       </div>
       
       <div class="space-y-4">
-        <div class="flex justify-between items-center text-sm">
-          <span class="text-gray-300">1 час</span>
-          <div class="flex gap-6 md:gap-12">
-            <span class="w-20 text-center font-semibold">10 000</span>
-            <span class="w-20 text-center font-semibold">12 000</span>
-            <span class="w-20 text-center font-semibold text-amber-300">20 000</span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center text-sm">
+          <span class="text-gray-300 md:col-span-1">1 час</span>
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <span class="font-semibold">10 000</span>
+            <span class="font-semibold">12 000</span>
+            <span class="font-semibold text-amber-300">20 000</span>
           </div>
         </div>
-        <div class="flex justify-between items-center text-sm">
-          <span class="text-gray-300">Дневной</span>
-          <div class="flex gap-6 md:gap-12">
-            <span class="w-20 text-center font-semibold">50 000</span>
-            <span class="w-20 text-center font-semibold">60 000</span>
-            <span class="w-20 text-center font-semibold text-amber-300">100 000</span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center text-sm">
+          <span class="text-gray-300 md:col-span-1">Дневной</span>
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <span class="font-semibold">50 000</span>
+            <span class="font-semibold">60 000</span>
+            <span class="font-semibold text-amber-300">100 000</span>
           </div>
         </div>
       </div>
@@ -162,42 +164,43 @@
       </div>
       
       <div class="space-y-4">
-        <div class="flex justify-between items-center text-sm">
-          <span class="text-gray-300">1 час</span>
-          <div class="flex gap-6 md:gap-12">
-            <span class="w-20 text-center font-semibold">22 000</span>
-            <span class="w-20 text-center font-semibold">26 000</span>
-            <span class="w-20 text-center font-semibold text-amber-300">32 000</span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center text-sm">
+          <span class="text-gray-300 md:col-span-1">1 час</span>
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <span class="font-semibold">22 000</span>
+            <span class="font-semibold">26 000</span>
+            <span class="font-semibold text-amber-300">32 000</span>
           </div>
         </div>
         
         <!-- 3 часа (ВЫГОДНО) -->
-        <div class="flex justify-between items-center bg-[#152222] border border-emerald-500/40 rounded-xl p-3.5">
-          <div>
+        <div class="bg-[#152222] border border-emerald-500/40 rounded-xl p-3.5 grid grid-cols-1 md:grid-cols-4 gap-2 items-center">
+          <div class="md:col-span-1">
             <span class="text-white font-medium text-sm block">3 часа</span>
             <span class="inline-block bg-emerald-500/20 text-emerald-400 text-[10px] px-2 py-0.5 rounded-full mt-1 font-bold">ВЫГОДНО</span>
           </div>
-          <div class="flex gap-6 md:gap-12 items-center">
-            <div class="w-20 text-center">
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <div>
               <span class="font-bold text-white">50 000</span>
               <span class="block text-[11px] text-gray-500 line-through">66 000</span>
             </div>
-            <div class="w-20 text-center">
+            <div>
               <span class="font-bold text-white">60 000</span>
               <span class="block text-[11px] text-gray-500 line-through">78 000</span>
             </div>
-            <div class="w-20 text-center">
+            <div>
               <span class="font-bold text-amber-300">80 000</span>
               <span class="block text-[11px] text-gray-500 line-through">96 000</span>
             </div>
           </div>
         </div>
-: <div class="flex justify-between items-center text-sm">
-          <span class="text-gray-300">5 часов</span>
-          <div class="flex gap-6 md:gap-12">
-            <span class="w-20 text-center font-semibold">75 000</span>
-            <span class="w-20 text-center font-semibold">90 000</span>
-            <span class="w-20 text-center font-semibold text-amber-300">135 000</span>
+
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center text-sm">
+          <span class="text-gray-300 md:col-span-1">5 часов</span>
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <span class="font-semibold">75 000</span>
+            <span class="font-semibold">90 000</span>
+            <span class="font-semibold text-amber-300">135 000</span>
           </div>
         </div>
       </div>
@@ -211,12 +214,12 @@
       </div>
       
       <div class="space-y-4">
-        <div class="flex justify-between items-center text-sm">
-          <span class="text-gray-300">Вся ночь</span>
-          <div class="flex gap-6 md:gap-12">
-            <span class="w-20 text-center font-semibold">70 000</span>
-            <span class="w-20 text-center font-semibold">85 000</span>
-            <span class="w-20 text-center font-semibold text-amber-300">100 000</span>
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-2 items-center text-sm">
+          <span class="text-gray-300 md:col-span-1">Вся ночь</span>
+          <div class="grid grid-cols-3 md:col-span-3 text-center">
+            <span class="font-semibold">70 000</span>
+            <span class="font-semibold">85 000</span>
+            <span class="font-semibold text-amber-300">100 000</span>
           </div>
         </div>
       </div>
@@ -480,7 +483,7 @@
     </div>
 
     <!-- Зона VIP -->
-    <div class="bg-[#12141c] border border-purple-500/30 rounded-3xl p-10 md:p-12 shadow-2xl relative overflow-hidden space-y-8 mt-12">
+    <div class="bg-[#12141c] border border-purple-500/30 rounded-3xl p-10 md:p-12 shadow-2xl relative overflow-hidden space-y-8 mt-12">пше 
       <div class="flex items-center justify-between border-b border-gray-800 pb-4">
         <h3 class="text-2xl font-bold text-purple-400 font-display">Зал VIP</h3>
         <span class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/30 px-3.5 py-1.5 rounded-full font-semibold">Эксклюзив</span>
