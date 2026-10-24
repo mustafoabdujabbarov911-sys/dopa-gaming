@@ -61,12 +61,15 @@
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.35);
 }
 
-* {
+/* В @layer base, иначе неслоёвый * перебивает утилиты Tailwind (mx-auto, px-*, font-*) */
+@layer base {
+  * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     scroll-behavior: smooth;
+  }
 }
 
 body {
