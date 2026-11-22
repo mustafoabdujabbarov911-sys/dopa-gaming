@@ -6,23 +6,44 @@ const KEY = "lang";
 
 export function getLang() {
   const saved = localStorage.getItem(KEY);
-  return saved in dict ? saved : "ru";
+  return saved && saved in dict ? saved : "ru";
 }
 
-// Элементы с data-i18n="ключ" получают текст из словаря текущего языка.
 export function applyLang(lang) {
-  document.documentElement.lang = lang;
+  const language = dict[lang] ? lang : "ru";
+
+  document.documentElement.lang = language;
+
   document.querySelectorAll("[data-i18n]").forEach((el) => {
-    const text = dict[lang][el.dataset.i18n];
-    if (text) el.textContent = text;
+    const key = el.dataset.i18n;
+    const text = dict[language][key];
+
+    if (text !== undefined) {
+      el.textContent = text;
+    }
+  });
+
+  // Обновляем активную кнопку
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === language);
   });
 }
 
 export function setLang(lang) {
+  if (!dict[lang]) return;
+
   localStorage.setItem(KEY, lang);
   applyLang(lang);
 }
 
 export function initI18n() {
   applyLang(getLang());
+
+  document.querySelectorAll("[data-lang]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const lang = btn.dataset.lang;
+      if (lang) setLang(lang);
+    });
+  });
 }
