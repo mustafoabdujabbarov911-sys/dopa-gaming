@@ -167,6 +167,32 @@
   color: #000000;
 }
 
+/* Кнопка переключения темы (День / Ночь) */
+.theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border);
+  color: #e2e8f0;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
 /* Кнопка «Забронировать» */
 .btn-booking {
   background: linear-gradient(135deg, #f59e0b, #ea580c);
@@ -949,4 +975,190 @@
   .yandex-map {
     min-height: 320px;
   }
+}
+
+/* -------------------------------------------------------------
+   СВЕТЛАЯ ТЕМА (LIGHT THEME)
+   ------------------------------------------------------------- */
+html.light {
+  --color-bg: #f8fafc;
+  --bg-main: #f8fafc;
+  --glass-bg: rgba(255, 255, 255, 0.88);
+  --glass-border: rgba(0, 0, 0, 0.08);
+  --glass-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+html.light body {
+  background-color: #f8fafc;
+  color: #0f172a;
+}
+
+html.light .glass-container {
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+html.light .logo {
+  color: #0f172a;
+}
+
+html.light .nav-links a {
+  color: #475569;
+}
+
+html.light .nav-links a:hover {
+  color: #0f172a;
+}
+
+html.light .lang-switch {
+  background: rgba(0, 0, 0, 0.06);
+}
+
+html.light .lang-btn {
+  color: #64748b;
+}
+
+html.light .lang-btn.active {
+  background: #0f172a;
+  color: #ffffff;
+}
+
+html.light .theme-toggle-btn {
+  background: rgba(0, 0, 0, 0.06);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #0f172a;
+}
+
+html.light .theme-toggle-btn:hover {
+  background: rgba(0, 0, 0, 0.12);
+  color: #000000;
+}
+
+html.light .burger-btn {
+  color: #0f172a;
+}
+
+html.light .mobile-menu {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(0, 0, 0, 0.1);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.12);
+}
+
+html.light .mobile-link {
+  color: #334155;
+}
+
+html.light .mobile-link:hover {
+  color: #0f172a;
+}
+
+html.light .mobile-controls {
+  border-top-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+html.light .tariff-banner {
+  color: #b45309;
+}
+
+html.light .hero-bg {
+  opacity: 0.15;
+  filter: blur(12px) brightness(1.2);
+}
+
+html.light .hero-container {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.08);
+}
+
+html.light .hero-title {
+  color: #0f172a;
+  text-shadow: none;
+}
+
+html.light .hero-subtitle {
+  color: #475569;
+}
+
+html.light .btn-secondary {
+  background: rgba(0, 0, 0, 0.05);
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.12);
+}
+
+html.light .btn-secondary:hover {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+html.light .tariff-pill {
+  background: rgba(245, 158, 11, 0.12);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #b45309;
+}
+
+/* Карточки цен, бонусов, зон и железа в светлой теме */
+html.light .bg-\[\#12141c\] {
+  background-color: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+}
+
+html.light .border-gray-800,
+html.light .border-gray-800\/80 {
+  border-color: #e2e8f0 !important;
+}
+
+html.light .text-white {
+  color: #0f172a !important;
+}
+
+html.light .text-gray-300 {
+  color: #334155 !important;
+}
+
+html.light .text-gray-400 {
+  color: #64748b !important;
+}
+
+html.light .text-gray-500 {
+  color: #64748b !important;
+}
+
+html.light .bg-\[\#152222\] {
+  background-color: #ecfdf5 !important;
+  border-color: rgba(16, 185, 129, 0.35) !important;
+}
+
+html.light .address-info-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+html.light .info-title,
+html.light .info-status {
+  color: #0f172a;
+}
+
+html.light .map-card {
+  background: #ffffff;
+  border-color: #e2e8f0;
+}
+
+/* Отключаем инвертирующий фильтр на карте в светлой теме, чтобы была чистая дневная карта */
+html.light .yandex-map {
+  filter: none;
+}
+
+/* Табы железа в светлой теме */
+html.light .hw-tab:not(.bg-white) {
+  background-color: #f1f5f9 !important;
+  color: #64748b !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .hw-tab.bg-white {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
 }

@@ -2,6 +2,7 @@ import "./style.css";
 import { initI18n } from "./modules/i18n.js";
 import { initTariffs } from "./modules/tariffs.js";
 import { initMenu } from "./modules/menu.js";
+import { initTheme } from "./modules/theme.js";
 
 function initHardwareTabs() {
   const tabs = document.querySelectorAll(".hw-tab");
@@ -59,6 +60,7 @@ function initHardwareTabs() {
 }
 
 function bootstrap() {
+  initTheme();
   initI18n();
   initTariffs();
   initMenu();

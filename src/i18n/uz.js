@@ -78,4 +78,7 @@ export default {
   zone_v1: "Flagman komponentlar va murosasiz unumdorlik",
   zone_v2: "Ultra-tezkor monitorlar va yuqori darajadagi qurilmalar",
   zone_v3: "Yuqori shaxsiy qulaylik va maxsus atmosfera yoritilishi",
+  theme_toggle: "Mavzuni almashtirish",
+  theme_light: "Yorug‘ mavzu",
+  theme_dark: "Qorong‘i mavzu",
 };
