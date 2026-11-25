@@ -1,5 +1,6 @@
 import ru from "../i18n/ru.js";
 import uz from "../i18n/uz.js";
+import { updateTariffBanner } from "./tariffs.js";
 
 const dict = { ru, uz };
 const KEY = "lang";
@@ -16,17 +17,25 @@ export function applyLang(lang) {
 
   document.querySelectorAll("[data-i18n]").forEach((el) => {
     const key = el.dataset.i18n;
-    const text = dict[language][key];
+    const text = dict[language]?.[key];
 
     if (text !== undefined) {
-      el.textContent = text;
+      // Если элемент - input с placeholder
+      if (el.tagName === "INPUT" || el.tagName === "TEXTAREA") {
+        el.placeholder = text;
+      } else {
+        el.textContent = text;
+      }
     }
   });
 
-  // Обновляем активную кнопку
+  // Обновляем все кнопки переключения языков (в десктопном и мобильном меню)
   document.querySelectorAll("[data-lang]").forEach((btn) => {
     btn.classList.toggle("active", btn.dataset.lang === language);
   });
+
+  // Обновляем динамический баннер тарифов на выбранном языке
+  updateTariffBanner();
 }
 
 export function setLang(lang) {

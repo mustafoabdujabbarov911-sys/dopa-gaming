@@ -1,48 +1,67 @@
 import "./style.css";
 import { initI18n } from "./modules/i18n.js";
+import { initTariffs } from "./modules/tariffs.js";
+import { initMenu } from "./modules/menu.js";
 
 function initHardwareTabs() {
-  const btnMain = document.getElementById("btn-main");
-  const btnComfort = document.getElementById("btn-comfort");
-  const btnVip = document.getElementById("btn-vip");
+  const tabs = document.querySelectorAll(".hw-tab");
+  const contents = document.querySelectorAll(".hw-content");
+
+  const activeStyles = {
+    main: ["bg-white", "text-amber-600", "shadow-lg"],
+    comfort: ["bg-white", "text-emerald-600", "shadow-lg"],
+    vip: ["bg-white", "text-purple-600", "shadow-lg"],
+  };
+
+  const inactiveClasses = [
+    "bg-[#12141c]",
+    "text-gray-400",
+    "border",
+    "border-gray-800",
+    "hover:text-white",
+  ];
 
   function switchHardware(zone) {
-    document.querySelectorAll(".hw-content").forEach((el) => {
-      el.classList.add("hidden");
-    });
-
-    document.querySelectorAll(".hw-tab").forEach((btn) => {
-      btn.className =
-        "hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-[#12141c] text-gray-400 border border-gray-800 hover:text-white transition-all cursor-pointer";
-    });
-
-    const activeContent = document.getElementById(`hw-${zone}`);
-    if (activeContent) {
-      activeContent.classList.remove("hidden");
-    }
-
-    const activeBtn = document.getElementById(`btn-${zone}`);
-    if (activeBtn) {
-      if (zone === "main") {
-        activeBtn.className =
-          "hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-white text-amber-600 shadow-lg transition-all cursor-pointer";
-      } else if (zone === "comfort") {
-        activeBtn.className =
-          "hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-white text-emerald-600 shadow-lg transition-all cursor-pointer";
-      } else if (zone === "vip") {
-        activeBtn.className =
-          "hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-white text-purple-600 shadow-lg transition-all cursor-pointer";
+    contents.forEach((el) => {
+      if (el.id === `hw-${zone}`) {
+        el.classList.remove("hidden");
+      } else {
+        el.classList.add("hidden");
       }
-    }
+    });
+
+    tabs.forEach((btn) => {
+      const btnZone =
+        btn.dataset.zone || (btn.id ? btn.id.replace("btn-", "") : "");
+
+      // Снимаем активные стили
+      Object.values(activeStyles).forEach((classes) =>
+        btn.classList.remove(...classes),
+      );
+      btn.classList.remove(...inactiveClasses);
+
+      if (btnZone === zone) {
+        const toAdd = activeStyles[zone] || activeStyles.main;
+        btn.classList.add(...toAdd);
+      } else {
+        btn.classList.add(...inactiveClasses);
+      }
+    });
   }
 
-  if (btnMain) btnMain.addEventListener("click", () => switchHardware("main"));
-  if (btnComfort) btnComfort.addEventListener("click", () => switchHardware("comfort"));
-  if (btnVip) btnVip.addEventListener("click", () => switchHardware("vip"));
+  tabs.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const zone =
+        btn.dataset.zone || (btn.id ? btn.id.replace("btn-", "") : "main");
+      switchHardware(zone);
+    });
+  });
 }
 
 function bootstrap() {
   initI18n();
+  initTariffs();
+  initMenu();
   initHardwareTabs();
 }
 

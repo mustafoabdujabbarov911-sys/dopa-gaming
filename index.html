@@ -3,15 +3,18 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="page_title">DOPA Gaming — компьютерный клуб в Ташкенте</title>
+    <title data-i18n="page_title">
+      DOPA Gaming — компьютерный клуб в Ташкенте
+    </title>
     <meta
       name="description"
-      content="Компьютерный клуб DOPA Gaming в Ташкенте: зоны MAIN и VIP, RTX 5060/5070, мониторы 400–500 Гц. Цены, адрес, бронь."
+      content="Компьютерный клуб DOPA Gaming в Ташкенте: зоны MAIN, COMFORT и VIP, RTX 5060/5070, мониторы 400–500 Гц. Цены, адрес, бронь."
     />
     <meta name="theme-color" content="#0b0d14" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   </head>
-  <body class="bg-bg font-body text-white antialiased">
+  <body class="overflow-x-hidden bg-bg font-body text-white antialiased">
+    <!-- ШАПКА САЙТА -->
     <header class="glass-header">
       <div class="glass-container">
         <!-- Логотип -->
@@ -22,6 +25,7 @@
           <ul class="nav-links">
             <li><a href="#zones" data-i18n="nav_zones">Зоны</a></li>
             <li><a href="#prices" data-i18n="nav_prices">Цены</a></li>
+            <li><a href="#bonuses" data-i18n="nav_bonuses">Бонусы</a></li>
             <li><a href="#hardware" data-i18n="nav_hardware">Железо</a></li>
             <li><a href="#address" data-i18n="nav_address">Адрес</a></li>
           </ul>
@@ -30,21 +34,46 @@
         <!-- Правая часть: Переключатель языка и кнопка -->
         <div class="header-right">
           <!-- Переключатель RU / UZ -->
-          <div class="lang-switch">
-            <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+          <div class="lang-switch" role="group" aria-label="Выбор языка">
+            <button type="button" class="lang-btn active" data-lang="ru">
+              RU
+            </button>
             <button type="button" class="lang-btn" data-lang="uz">UZ</button>
           </div>
 
           <!-- Кнопка Забронировать -->
-          <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" class="btn-booking" data-i18n="btn_book">
+          <a
+            href="https://t.me/dopa_gaming"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-booking"
+            data-i18n="btn_book"
+          >
             Забронировать
           </a>
         </div>
 
         <!-- Кнопка мобильного меню (Бургер) -->
-        <button type="button" class="burger-btn" id="burgerBtn" aria-label="Открыть меню">
-          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+        <button
+          type="button"
+          class="burger-btn"
+          id="burgerBtn"
+          aria-label="Открыть меню"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <svg
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            class="h-7 w-7"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
           </svg>
         </button>
       </div>
@@ -53,672 +82,1263 @@
       <div class="mobile-menu" id="mobileMenu">
         <a href="#zones" class="mobile-link" data-i18n="nav_zones">Зоны</a>
         <a href="#prices" class="mobile-link" data-i18n="nav_prices">Цены</a>
-        <a href="#hardware" class="mobile-link" data-i18n="nav_hardware">Железо</a>
+        <a href="#bonuses" class="mobile-link" data-i18n="nav_bonuses"
+          >Бонусы</a
+        >
+        <a href="#hardware" class="mobile-link" data-i18n="nav_hardware"
+          >Железо</a
+        >
         <a href="#address" class="mobile-link" data-i18n="nav_address">Адрес</a>
 
         <div class="mobile-lang">
-          <button type="button" class="lang-btn active" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn active" data-lang="ru">
+            RU
+          </button>
           <button type="button" class="lang-btn" data-lang="uz">UZ</button>
         </div>
 
-        <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" class="btn-booking mobile-btn-block" data-i18n="btn_book">
+        <a
+          href="https://t.me/dopa_gaming"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-booking mobile-btn-block"
+          data-i18n="btn_book"
+        >
           Забронировать
         </a>
       </div>
     </header>
 
-    <!-- ПЛАШКА ТЕКУЩЕГО ТАРИФА -->
-    <section class="tariff-status-section">
-      <div class="glass-container tariff-banner">
-        <div class="pulse-dot"></div>
-        <span class="tariff-text" data-i18n="tariff_loading">Определяем текущий тариф...</span>
-      </div>
-    </section>
-
-    <!-- SHOWCASE / HERO SECTION (Первый экран) -->
-    <section class="hero-section">
-      <!-- Затенённый фоновый рисунок клуба с размытием (blur) -->
-      <div class="hero-bg"></div>
-
-      <!-- Стеклянный контейнер с содержимым -->
-      <div class="hero-container">
-        <!-- Бейдж "Открыто 24/7" -->
-        <div class="badge-pill">
-          <div class="badge-dot"></div>
-          <span data-i18n="open_24_7">ОТКРЫТО 24/7</span>
+    <main id="main">
+      <!-- ПЛАШКА ТЕКУЩЕГО ТАРИФА -->
+      <section class="tariff-status-section">
+        <div class="glass-container tariff-banner">
+          <div class="pulse-dot"></div>
+          <span class="tariff-text" data-i18n="tariff_loading"
+            >Определяем текущий тариф...</span
+          >
         </div>
+      </section>
 
-        <!-- Главный заголовок с неоновым свечением -->
-        <h1 class="hero-title" data-i18n="hero_title">
-          Игровой клуб в центре <span>Ташкента</span>
-        </h1>
+      <!-- SHOWCASE / HERO SECTION (Первый экран) -->
+      <section class="hero-section">
+        <!-- Затенённый фоновый рисунок клуба с размытием (blur) -->
+        <div class="hero-bg"></div>
 
-        <!-- Краткое описание -->
-        <p class="hero-subtitle" data-i18n="hero_subtitle">
-          Топовые ПК, мощная периферия, атмосферная подсветка MAIN и VIP залов. Забронируй ПК в пару кликов!
-        </p>
-
-        <!-- Кнопки действий -->
-        <div class="hero-actions">
-          <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" class="btn-booking" data-i18n="btn_book_tg">
-            Забронировать (Telegram)
-          </a>
-          <a href="#prices" class="btn-secondary" data-i18n="btn_prices">
-            Посмотреть цены
-          </a>
-        </div>
-
-        <!-- Плашка активного тарифа -->
-        <div class="tariff-pill">
-          <span class="tariff-icon">⏳</span>
-          <span class="tariff-text" data-i18n="tariff_loading">Определяем текущий тариф...</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- СЕКЦИЯ ЦЕНЫ -->
-    <section id="prices" class="py-10 sm:py-12 px-3 sm:px-4 max-w-4xl mx-auto text-white">
-      <!-- ЗАГОЛОВОК -->
-      <div class="text-center mb-8">
-        <h2 class="text-3xl sm:text-4xl font-extrabold font-display tracking-wider mb-2" data-i18n="prices_title">
-          ЦЕНЫ
-        </h2>
-        <p class="text-xs text-gray-400 tracking-widest uppercase" data-i18n="currency_247">
-          сум • 24/7
-        </p>
-      </div>
-
-      <div class="space-y-5 sm:space-y-6">
-        <!-- КАРТОЧКА ДЕНЬ -->
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 sm:p-6 shadow-xl">
-          <div class="flex justify-between items-center mb-4 text-xs text-gray-400 border-b border-gray-800 pb-3">
-            <span class="font-bold text-white text-sm tracking-wider" data-i18n="slot_day">ДЕНЬ</span>
-            <span>08:00 – 17:00</span>
+        <!-- Стеклянный контейнер с содержимым -->
+        <div class="hero-container">
+          <!-- Бейдж "Открыто 24/7" -->
+          <div class="badge-pill">
+            <div class="badge-dot"></div>
+            <span data-i18n="open_24_7">ОТКРЫТО 24/7</span>
           </div>
 
-          <!-- КАТЕГОРИИ -->
-          <div class="grid grid-cols-4 gap-1 sm:gap-2 mb-4 text-center text-xs sm:text-sm font-bold">
-            <div></div>
-            <div class="text-amber-500">MAIN</div>
-            <div class="text-emerald-400">COMFORT</div>
-            <div class="text-amber-300">VIP</div>
+          <!-- Главный заголовок с неоновым свечением -->
+          <h1 class="hero-title" data-i18n="hero_title">
+            Игровой клуб в центре <span>Ташкента</span>
+          </h1>
+
+          <!-- Краткое описание -->
+          <p class="hero-subtitle" data-i18n="hero_subtitle">
+            Топовые ПК, мощная периферия, атмосферная подсветка MAIN и VIP
+            залов. Забронируй ПК в пару кликов!
+          </p>
+
+          <!-- Кнопки действий -->
+          <div class="hero-actions">
+            <a
+              href="https://t.me/dopa_gaming"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-booking"
+              data-i18n="btn_book_tg"
+            >
+              Забронировать (Telegram)
+            </a>
+            <a href="#prices" class="btn-secondary" data-i18n="btn_prices">
+              Посмотреть цены
+            </a>
           </div>
 
-          <div class="space-y-4">
-            <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center text-xs sm:text-sm">
-              <span class="text-gray-300" data-i18n="pkg_1h">1 час</span>
-              <span class="font-semibold text-center">10 000</span>
-              <span class="font-semibold text-center">12 000</span>
-              <span class="font-semibold text-amber-300 text-center">20 000</span>
+          <!-- Плашка активного тарифа -->
+          <div class="tariff-pill">
+            <span class="tariff-icon">⚡</span>
+            <span class="tariff-text" data-i18n="tariff_loading"
+              >Определяем текущий тариф...</span
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- СЕКЦИЯ ЦЕНЫ -->
+      <section
+        id="prices"
+        class="mx-auto max-w-4xl px-3 py-10 text-white sm:px-4 sm:py-14"
+      >
+        <!-- ЗАГОЛОВОК -->
+        <div class="mb-8 text-center">
+          <h2
+            class="mb-2 font-display text-3xl font-extrabold tracking-wider sm:text-4xl"
+            data-i18n="prices_title"
+          >
+            ЦЕНЫ
+          </h2>
+          <p
+            class="text-xs tracking-widest text-gray-400 uppercase"
+            data-i18n="currency_247"
+          >
+            сум • 24/7
+          </p>
+        </div>
+
+        <div class="space-y-5 sm:space-y-6">
+          <!-- КАРТОЧКА ДЕНЬ -->
+          <div
+            class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 shadow-xl sm:p-6"
+          >
+            <div
+              class="mb-4 flex items-center justify-between border-b border-gray-800 pb-3 text-xs text-gray-400"
+            >
+              <span
+                class="text-sm font-bold tracking-wider text-white"
+                data-i18n="slot_day"
+                >ДЕНЬ</span
+              >
+              <span class="font-semibold text-gray-300">08:00 – 17:00</span>
             </div>
 
-            <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center text-xs sm:text-sm">
-              <span class="text-gray-300" data-i18n="pkg_day">Дневной</span>
-              <span class="font-semibold text-center">50 000</span>
-              <span class="font-semibold text-center">60 000</span>
-              <span class="font-semibold text-amber-300 text-center">100 000</span>
+            <!-- КАТЕГОРИИ -->
+            <div
+              class="mb-4 grid grid-cols-4 gap-1 text-center text-xs font-bold sm:gap-2 sm:text-sm"
+            >
+              <div></div>
+              <div class="text-amber-500">MAIN</div>
+              <div class="text-emerald-400">COMFORT</div>
+              <div class="text-amber-300">VIP</div>
             </div>
+
+            <div class="space-y-4">
+              <div
+                class="grid grid-cols-4 items-center gap-1 text-xs sm:gap-2 sm:text-sm"
+              >
+                <span class="text-gray-300" data-i18n="pkg_1h">1 час</span>
+                <span class="text-center font-semibold">10 000</span>
+                <span class="text-center font-semibold">12 000</span>
+                <span class="text-center font-semibold text-amber-300"
+                  >20 000</span
+                >
+              </div>
+
+              <div
+                class="grid grid-cols-4 items-center gap-1 text-xs sm:gap-2 sm:text-sm"
+              >
+                <span class="text-gray-300" data-i18n="pkg_day">Дневной</span>
+                <span class="text-center font-semibold">50 000</span>
+                <span class="text-center font-semibold">60 000</span>
+                <span class="text-center font-semibold text-amber-300"
+                  >100 000</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- КАРТОЧКА ВЕЧЕР -->
+          <div
+            class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 shadow-xl sm:p-6"
+          >
+            <div
+              class="mb-4 flex items-center justify-between border-b border-gray-800 pb-3 text-xs text-gray-400"
+            >
+              <span
+                class="text-sm font-bold tracking-wider text-white"
+                data-i18n="slot_evening"
+                >ВЕЧЕР</span
+              >
+              <span class="font-semibold text-gray-300">17:00 – 08:00</span>
+            </div>
+
+            <!-- КАТЕГОРИИ -->
+            <div
+              class="mb-4 grid grid-cols-4 gap-1 text-center text-xs font-bold sm:gap-2 sm:text-sm"
+            >
+              <div></div>
+              <div class="text-amber-500">MAIN</div>
+              <div class="text-emerald-400">COMFORT</div>
+              <div class="text-amber-300">VIP</div>
+            </div>
+
+            <div class="space-y-4">
+              <!-- 1 ЧАС -->
+              <div
+                class="grid grid-cols-4 items-center gap-1 text-xs sm:gap-2 sm:text-sm"
+              >
+                <span class="text-gray-300" data-i18n="pkg_1h">1 час</span>
+                <span class="text-center font-semibold">22 000</span>
+                <span class="text-center font-semibold">26 000</span>
+                <span class="text-center font-semibold text-amber-300"
+                  >32 000</span
+                >
+              </div>
+
+              <!-- 3 ЧАСА -->
+              <div
+                class="rounded-xl border border-emerald-500/40 bg-[#152222] p-3 sm:p-3.5"
+              >
+                <div class="grid grid-cols-4 items-center gap-1 sm:gap-2">
+                  <div>
+                    <span
+                      class="block text-xs font-medium text-white sm:text-sm"
+                      data-i18n="pkg_3h"
+                      >3 часа</span
+                    >
+                    <span
+                      class="mt-1 inline-block rounded-full bg-emerald-500/20 px-2 py-0.5 text-[9px] font-bold text-emerald-400 sm:text-[10px]"
+                      data-i18n="badge_profitable"
+                    >
+                      ВЫГОДНО
+                    </span>
+                  </div>
+
+                  <div class="text-center">
+                    <span class="text-xs font-bold text-white sm:text-sm"
+                      >50 000</span
+                    >
+                    <span
+                      class="block text-[10px] text-gray-500 line-through sm:text-[11px]"
+                      >66 000</span
+                    >
+                  </div>
+
+                  <div class="text-center">
+                    <span class="text-xs font-bold text-white sm:text-sm"
+                      >60 000</span
+                    >
+                    <span
+                      class="block text-[10px] text-gray-500 line-through sm:text-[11px]"
+                      >78 000</span
+                    >
+                  </div>
+
+                  <div class="text-center">
+                    <span class="text-xs font-bold text-amber-300 sm:text-sm"
+                      >80 000</span
+                    >
+                    <span
+                      class="block text-[10px] text-gray-500 line-through sm:text-[11px]"
+                      >96 000</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5 ЧАСОВ -->
+              <div
+                class="grid grid-cols-4 items-center gap-1 text-xs sm:gap-2 sm:text-sm"
+              >
+                <span class="text-gray-300" data-i18n="pkg_5h">5 часов</span>
+                <span class="text-center font-semibold">75 000</span>
+                <span class="text-center font-semibold">90 000</span>
+                <span class="text-center font-semibold text-amber-300"
+                  >135 000</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- КАРТОЧКА НОЧЬ -->
+          <div
+            class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 shadow-xl sm:p-6"
+          >
+            <div
+              class="mb-4 flex items-center justify-between border-b border-gray-800 pb-3 text-xs text-gray-400"
+            >
+              <span
+                class="text-sm font-bold tracking-wider text-white"
+                data-i18n="slot_night"
+                >НОЧЬ</span
+              >
+              <span class="font-semibold text-gray-300">00:00 – 08:00</span>
+            </div>
+
+            <!-- КАТЕГОРИИ -->
+            <div
+              class="mb-4 grid grid-cols-4 gap-1 text-center text-xs font-bold sm:gap-2 sm:text-sm"
+            >
+              <div></div>
+              <div class="text-amber-500">MAIN</div>
+              <div class="text-emerald-400">COMFORT</div>
+              <div class="text-amber-300">VIP</div>
+            </div>
+
+            <div
+              class="grid grid-cols-4 items-center gap-1 text-xs sm:gap-2 sm:text-sm"
+            >
+              <span class="text-gray-300" data-i18n="pkg_night">Вся ночь</span>
+              <span class="text-center font-semibold">70 000</span>
+              <span class="text-center font-semibold">85 000</span>
+              <span class="text-center font-semibold text-amber-300"
+                >100 000</span
+              >
+            </div>
+          </div>
+
+          <!-- ЭКОНОМИЯ -->
+          <p
+            class="px-2 pt-2 text-center text-xs text-gray-400"
+            data-i18n="savings_note"
+          >
+            3 часа вечером дешевле, чем 3 раза по часу:
+            <span class="font-semibold text-emerald-400"
+              >экономия до 18 000</span
+            >
+          </p>
+        </div>
+      </section>
+
+      <!-- СЕКЦИЯ БОНУСЫ -->
+      <section id="bonuses" class="mx-auto max-w-4xl px-4 py-12">
+        <div class="mb-8 text-center">
+          <h2
+            class="mb-2 font-display text-3xl font-extrabold tracking-wider sm:text-4xl"
+            data-i18n="bonuses_title"
+          >
+            БОНУС
+          </h2>
+          <p
+            class="mb-3 text-xs tracking-widest text-gray-400 uppercase"
+            data-i18n="currency_247"
+          >
+            сум • 24/7
+          </p>
+          <p class="text-sm text-gray-300" data-i18n="bonuses_subtitle">
+            Пополни баланс и получи
+            <span class="font-bold text-white">бонусные суммы</span> сверху
+          </p>
+        </div>
+
+        <!-- Сетка бонусов -->
+        <div class="mb-6 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <div class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-5">
+            <span
+              class="mb-1 block text-xs text-gray-400"
+              data-i18n="topup_label"
+              >пополнение</span
+            >
+            <div class="mb-2 text-xl font-bold text-white">80 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+20 000</div>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-5">
+            <span
+              class="mb-1 block text-xs text-gray-400"
+              data-i18n="topup_label"
+              >пополнение</span
+            >
+            <div class="mb-2 text-xl font-bold text-white">100 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+30 000</div>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-5">
+            <span
+              class="mb-1 block text-xs text-gray-400"
+              data-i18n="topup_label"
+              >пополнение</span
+            >
+            <div class="mb-2 text-xl font-bold text-white">200 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+70 000</div>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-5">
+            <span
+              class="mb-1 block text-xs text-gray-400"
+              data-i18n="topup_label"
+              >пополнение</span
+            >
+            <div class="mb-2 text-xl font-bold text-white">300 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+100 000</div>
+          </div>
+
+          <div class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-5">
+            <span
+              class="mb-1 block text-xs text-gray-400"
+              data-i18n="topup_label"
+              >пополнение</span
+            >
+            <div class="mb-2 text-xl font-bold text-white">500 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+250 000</div>
+          </div>
+
+          <div
+            class="relative rounded-2xl border border-amber-500/50 bg-[#12141c] p-5"
+          >
+            <div class="flex items-start justify-between">
+              <span
+                class="mb-1 block text-xs text-gray-400"
+                data-i18n="topup_label"
+                >пополнение</span
+              >
+              <span
+                class="rounded-full border border-amber-500/40 bg-amber-500/20 px-2 py-0.5 text-[10px] font-bold tracking-wider text-amber-400 uppercase"
+                data-i18n="badge_max"
+              >
+                МАКС
+              </span>
+            </div>
+            <div class="mb-2 text-xl font-bold text-white">1 000 000</div>
+            <div class="text-2xl font-extrabold text-amber-400">+500 000</div>
           </div>
         </div>
 
-        <!-- КАРТОЧКА ВЕЧЕР -->
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 sm:p-6 shadow-xl">
-          <div class="flex justify-between items-center mb-4 text-xs text-gray-400 border-b border-gray-800 pb-3">
-            <span class="font-bold text-white text-sm tracking-wider" data-i18n="slot_evening">ВЕЧЕР</span>
-            <span>17:00 – 08:00</span>
+        <!-- Уведомление с иконкой -->
+        <div
+          class="flex items-start gap-4 rounded-2xl border border-gray-800/80 bg-[#12141c] p-4"
+        >
+          <div
+            class="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full border border-amber-400/50 font-serif text-lg text-amber-400"
+          >
+            i
           </div>
+          <p
+            class="pt-1 text-xs leading-relaxed text-gray-300 sm:text-sm"
+            data-i18n="bonus_info"
+          >
+            Бонус приходит
+            <span class="font-bold text-white">на отдельный счёт</span> и идёт
+            на почасовую игру. На пакеты (дневной, 3/5 часов, ночь) не тратится.
+          </p>
+        </div>
+      </section>
 
-          <!-- КАТЕГОРИИ -->
-          <div class="grid grid-cols-4 gap-1 sm:gap-2 mb-4 text-center text-xs sm:text-sm font-bold">
-            <div></div>
-            <div class="text-amber-500">MAIN</div>
-            <div class="text-emerald-400">COMFORT</div>
-            <div class="text-amber-300">VIP</div>
+      <!-- СЕКЦИЯ ЖЕЛЕЗО -->
+      <section id="hardware" class="relative z-10 mx-auto max-w-5xl px-4 py-14">
+        <div class="mb-8 text-center">
+          <h2
+            class="font-display text-3xl font-black tracking-wider text-white uppercase md:text-4xl"
+            data-i18n="hw_title"
+          >
+            ЖЕЛЕЗО
+          </h2>
+          <p class="mt-2 text-sm text-gray-400" data-i18n="hw_subtitle">
+            Мощные ПК и премиальная периферия
+          </p>
+
+          <!-- Переключатель вкладок -->
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <button
+              type="button"
+              id="btn-main"
+              data-zone="main"
+              class="hw-tab cursor-pointer rounded-xl bg-white px-6 py-2.5 text-sm font-bold text-amber-600 shadow-lg transition-all"
+            >
+              MAIN
+            </button>
+            <button
+              type="button"
+              id="btn-comfort"
+              data-zone="comfort"
+              class="hw-tab cursor-pointer rounded-xl border border-gray-800 bg-[#12141c] px-6 py-2.5 text-sm font-bold text-gray-400 transition-all hover:text-white"
+            >
+              COMFORT
+            </button>
+            <button
+              type="button"
+              id="btn-vip"
+              data-zone="vip"
+              class="hw-tab cursor-pointer rounded-xl border border-gray-800 bg-[#12141c] px-6 py-2.5 text-sm font-bold text-gray-400 transition-all hover:text-white"
+            >
+              VIP
+            </button>
           </div>
+        </div>
 
-          <div class="space-y-4">
-            <!-- 1 ЧАС -->
-            <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center text-xs sm:text-sm">
-              <span class="text-gray-300" data-i18n="pkg_1h">1 час</span>
-              <span class="font-semibold text-center">22 000</span>
-              <span class="font-semibold text-center">26 000</span>
-              <span class="font-semibold text-amber-300 text-center">32 000</span>
-            </div>
-
-            <!-- 3 ЧАСА -->
-            <div class="bg-[#152222] border border-emerald-500/40 rounded-xl p-3 sm:p-3.5">
-              <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center">
-                <div>
-                  <span class="text-white font-medium text-xs sm:text-sm block" data-i18n="pkg_3h">3 часа</span>
-                  <span class="inline-block bg-emerald-500/20 text-emerald-400 text-[9px] sm:text-[10px] px-2 py-0.5 rounded-full mt-1 font-bold" data-i18n="badge_profitable">
-                    ВЫГОДНО
-                  </span>
-                </div>
-
-                <div class="text-center">
-                  <span class="font-bold text-white text-xs sm:text-sm">50 000</span>
-                  <span class="block text-[10px] sm:text-[11px] text-gray-500 line-through">66 000</span>
-                </div>
-
-                <div class="text-center">
-                  <span class="font-bold text-white text-xs sm:text-sm">60 000</span>
-                  <span class="block text-[10px] sm:text-[11px] text-gray-500 line-through">78 000</span>
-                </div>
-
-                <div class="text-center">
-                  <span class="font-bold text-amber-300 text-xs sm:text-sm">80 000</span>
-                  <span class="block text-[10px] sm:text-[11px] text-gray-500 line-through">96 000</span>
-                </div>
+        <!-- MAIN -->
+        <div id="hw-main" class="hw-content">
+          <div class="grid grid-cols-2 gap-3.5 sm:grid-cols-3">
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                AMD
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                Ryzen 5 7500F
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_cpu">
+                процессор
               </div>
             </div>
 
-            <!-- 5 ЧАСОВ -->
-            <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center text-xs sm:text-sm">
-              <span class="text-gray-300" data-i18n="pkg_5h">5 часов</span>
-              <span class="font-semibold text-center">75 000</span>
-              <span class="font-semibold text-center">90 000</span>
-              <span class="font-semibold text-amber-300 text-center">135 000</span>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                NVIDIA
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                GeForce RTX 5060
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_gpu">
+                видеокарта
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                HKC
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                400 Гц
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_monitor">
+                монитор
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                DDR5
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                16 GB (2×8)
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_ram">
+                оперативная память
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                GRAVASTAR
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                Mercury K1 Lite
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_keyboard">
+                клавиатура
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                RAPOO
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                VT7 Max
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_mouse">
+                мышь
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="mt-3.5 flex items-center justify-center gap-3 rounded-2xl border border-gray-800/80 bg-[#12141c] px-4 py-3.5 text-center"
+          >
+            <span
+              class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >RAZER</span
+            >
+            <span class="text-sm font-extrabold text-white"
+              >BlackShark V2 X</span
+            >
+          </div>
+
+          <div
+            class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1"
+          >
+            <div
+              class="font-display text-2xl font-black text-white uppercase sm:text-3xl"
+            >
+              MAIN
+              <span
+                class="font-extrabold text-gray-300"
+                data-i18n="hw_zone_word"
+                >ЗОНА</span
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span
+                class="text-xs font-semibold text-gray-400 uppercase"
+                data-i18n="hw_from"
+                >от</span
+              >
+              <span
+                class="font-display text-3xl font-black text-white sm:text-4xl"
+                >10 000</span
+              >
+              <span
+                class="text-[11px] leading-tight font-semibold text-gray-400 uppercase"
+                data-i18n="hw_sum_hour"
+                >СУМ / ЧАС</span
+              >
             </div>
           </div>
         </div>
 
-        <!-- КАРТОЧКА НОЧЬ -->
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 sm:p-6 shadow-xl">
-          <div class="flex justify-between items-center mb-4 text-xs text-gray-400 border-b border-gray-800 pb-3">
-            <span class="font-bold text-white text-sm tracking-wider" data-i18n="slot_night">НОЧЬ</span>
-            <span>00:00 – 08:00</span>
+        <!-- COMFORT -->
+        <div id="hw-comfort" class="hw-content hidden">
+          <div class="grid grid-cols-2 gap-3.5 sm:grid-cols-3">
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                AMD
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                Ryzen 5 7500F
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_cpu">
+                процессор
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                NVIDIA
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                GeForce RTX 5060
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_gpu">
+                видеокарта
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                HKC
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                400 Гц
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_monitor">
+                монитор
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                DDR5
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                16 GB (2×8)
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_ram">
+                оперативная память
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                GRAVASTAR
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                Mercury K1 Lite
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_keyboard">
+                клавиатура
+              </div>
+            </div>
+
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                LOGITECH
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                G Pro X Superlight
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_mouse">
+                мышь
+              </div>
+            </div>
           </div>
 
-          <!-- КАТЕГОРИИ -->
-          <div class="grid grid-cols-4 gap-1 sm:gap-2 mb-4 text-center text-xs sm:text-sm font-bold">
-            <div></div>
-            <div class="text-amber-500">MAIN</div>
-            <div class="text-emerald-400">COMFORT</div>
-            <div class="text-amber-300">VIP</div>
+          <div
+            class="mt-3.5 flex items-center justify-center gap-3 rounded-2xl border border-gray-800/80 bg-[#12141c] px-4 py-3.5 text-center"
+          >
+            <span
+              class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >LOGITECH</span
+            >
+            <span class="text-sm font-extrabold text-white">G Pro X Wired</span>
           </div>
 
-          <div class="grid grid-cols-4 gap-1 sm:gap-2 items-center text-xs sm:text-sm">
-            <span class="text-gray-300" data-i18n="pkg_night">Вся ночь</span>
-            <span class="font-semibold text-center">70 000</span>
-            <span class="font-semibold text-center">85 000</span>
-            <span class="font-semibold text-amber-300 text-center">100 000</span>
+          <div
+            class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1"
+          >
+            <div
+              class="font-display text-2xl font-black text-white uppercase sm:text-3xl"
+            >
+              COMFORT
+              <span
+                class="font-extrabold text-gray-300"
+                data-i18n="hw_zone_word"
+                >ЗОНА</span
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span
+                class="text-xs font-semibold text-gray-400 uppercase"
+                data-i18n="hw_from"
+                >от</span
+              >
+              <span
+                class="font-display text-3xl font-black text-white sm:text-4xl"
+                >12 000</span
+              >
+              <span
+                class="text-[11px] leading-tight font-semibold text-gray-400 uppercase"
+                data-i18n="hw_sum_hour"
+                >СУМ / ЧАС</span
+              >
+            </div>
           </div>
         </div>
 
-        <!-- ЭКОНОМИЯ -->
-        <p class="text-xs text-center text-gray-400 pt-2 px-2" data-i18n="savings_note">
-          3 часа вечером дешевле, чем 3 раза по часу:
-          <span class="text-emerald-400 font-semibold">экономия до 18 000</span>
-        </p>
-      </div>
-    </section>
+        <!-- VIP -->
+        <div id="hw-vip" class="hw-content hidden">
+          <div class="grid grid-cols-2 gap-3.5 sm:grid-cols-3">
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                AMD
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                Ryzen 7 7800X3D
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_cpu">
+                процессор
+              </div>
+            </div>
 
-    <!-- СЕКЦИЯ БОНУСЫ -->
-    <section id="bonuses" class="py-12 px-4 max-w-4xl mx-auto">
-      <div class="text-center mb-8">
-        <h2 class="text-4xl font-extrabold font-display tracking-wider mb-2" data-i18n="bonuses_title">БОНУС</h2>
-        <p class="text-xs text-gray-400 tracking-widest uppercase mb-3" data-i18n="currency_247">сум • 24/7</p>
-        <p class="text-sm text-gray-300" data-i18n="bonuses_subtitle">
-          Пополни баланс и получи <span class="font-bold text-white">бонусные суммы</span> сверху
-        </p>
-      </div>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                NVIDIA
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                GeForce RTX 5070 12 GB
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_gpu">
+                видеокарта
+              </div>
+            </div>
 
-      <!-- Сетка бонусов -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-5">
-          <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-          <div class="text-xl font-bold text-white mb-2">80 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+20 000</div>
-        </div>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                ALIENWARE
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                500 Гц
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_monitor">
+                монитор
+              </div>
+            </div>
 
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-5">
-          <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-          <div class="text-xl font-bold text-white mb-2">100 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+30 000</div>
-        </div>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                DDR5
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                32 GB (2×16)
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_ram">
+                оперативная память
+              </div>
+            </div>
 
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-5">
-          <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-          <div class="text-xl font-bold text-white mb-2">200 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+70 000</div>
-        </div>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div class="text-sm font-extrabold text-white">
+                GRAVASTAR Mercury K1
+              </div>
+              <div class="mt-0.5 text-[10px] text-gray-500 uppercase">
+                VIP 1
+              </div>
+              <div class="mt-2 text-sm font-extrabold text-white">
+                MCHOSE Mix 87
+              </div>
+              <div class="mt-0.5 text-[10px] text-gray-500 uppercase">
+                VIP 2
+              </div>
+            </div>
 
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-5">
-          <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-          <div class="text-xl font-bold text-white mb-2">300 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+100 000</div>
-        </div>
-
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-5">
-          <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-          <div class="text-xl font-bold text-white mb-2">500 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+250 000</div>
-        </div>
-
-        <div class="bg-[#12141c] border border-amber-500/50 rounded-2xl p-5 relative">
-          <div class="flex justify-between items-start">
-            <span class="text-xs text-gray-400 block mb-1" data-i18n="topup_label">пополнение</span>
-            <span class="bg-amber-500/20 text-amber-400 border border-amber-500/40 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-wider" data-i18n="badge_max">
-              МАКС
-            </span>
-          </div>
-          <div class="text-xl font-bold text-white mb-2">1 000 000</div>
-          <div class="text-2xl font-extrabold text-amber-400">+500 000</div>
-        </div>
-      </div>
-
-      <!-- Уведомление с иконкой -->
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 flex items-start gap-4">
-        <div class="flex-shrink-0 w-8 h-8 rounded-full border border-amber-400/50 text-amber-400 flex items-center justify-center font-serif text-lg">
-          i
-        </div>
-        <p class="text-xs sm:text-sm text-gray-300 leading-relaxed pt-1" data-i18n="bonus_info">
-          Бонус приходит <span class="font-bold text-white">на отдельный счёт</span> и идёт на почасовую игру. На пакеты (дневной, 3/5 часов, ночь) не тратится.
-        </p>
-      </div>
-    </section>
-
-    <!-- СЕКЦИЯ ЖЕЛЕЗО -->
-   <section id="hardware" class="relative z-10 py-14 px-4 max-w-5xl mx-auto">
-  <div class="text-center mb-8">
-    <h2
-      class="text-3xl md:text-4xl font-black font-display text-white tracking-wider uppercase"
-      data-i18n="hw_title"
-    >
-      ЖЕЛЕЗО
-    </h2>
-    <p
-      class="text-sm text-gray-400 mt-2"
-      data-i18n="hw_subtitle"
-    >
-      Мощные ПК и премиальная периферия
-    </p>
-
-    <!-- Переключатель вкладок -->
-    <div class="flex flex-wrap items-center justify-center gap-3 mt-6">
-      <button
-        type="button"
-        id="btn-main"
-        class="hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-white text-amber-600 shadow-lg transition-all cursor-pointer"
-      >
-        MAIN
-      </button>
-      <button
-        type="button"
-        id="btn-comfort"
-        class="hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-[#12141c] text-gray-400 border border-gray-800 hover:text-white transition-all cursor-pointer"
-      >
-        COMFORT
-      </button>
-      <button
-        type="button"
-        id="btn-vip"
-        class="hw-tab px-6 py-2.5 rounded-xl font-bold text-sm bg-[#12141c] text-gray-400 border border-gray-800 hover:text-white transition-all cursor-pointer"
-      >
-        VIP
-      </button>
-    </div>
-  </div>
-
-  <!-- MAIN -->
-  <div id="hw-main" class="hw-content">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">AMD</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">Ryzen 5 7500F</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_cpu">процессор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">NVIDIA</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">GeForce RTX 5060</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_gpu">видеокарта</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">HKC</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">400 Гц</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_monitor">монитор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">DDR5</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">16 GB (2×8)</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_ram">оперативная память</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">GRAVASTAR</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">Mercury K1 Lite</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_keyboard">клавиатура</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">RAPOO</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">VT7 Max</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_mouse">мышь</div>
-      </div>
-    </div>
-
-    <div class="mt-3.5 bg-[#12141c] border border-gray-800/80 rounded-2xl px-4 py-3.5 flex items-center justify-center gap-3 text-center">
-      <span class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">RAZER</span>
-      <span class="text-sm font-extrabold text-white">BlackShark V2 X</span>
-    </div>
-
-    <div class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1">
-      <div class="text-2xl sm:text-3xl font-black font-display text-white uppercase">
-        MAIN <span class="text-gray-300 font-extrabold" data-i18n="hw_zone_word">ЗОНА</span>
-      </div>
-      <div class="flex items-baseline gap-2">
-        <span class="text-xs uppercase text-gray-400 font-semibold" data-i18n="hw_from">от</span>
-        <span class="text-3xl sm:text-4xl font-black font-display text-white">10 000</span>
-        <span class="text-[11px] uppercase text-gray-400 font-semibold leading-tight" data-i18n="hw_sum_hour">СУМ / ЧАС</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- COMFORT -->
-  <div id="hw-comfort" class="hw-content hidden">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">AMD</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">Ryzen 5 7500F</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_cpu">процессор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">NVIDIA</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">GeForce RTX 5060</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_gpu">видеокарта</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">HKC</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">400 Гц</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_monitor">монитор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">DDR5</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">16 GB (2×8)</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_ram">оперативная память</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">GRAVASTAR</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">Mercury K1 Lite</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_keyboard">клавиатура</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">LOGITECH</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">G Pro X Superlight</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_mouse">мышь</div>
-      </div>
-    </div>
-
-    <div class="mt-3.5 bg-[#12141c] border border-gray-800/80 rounded-2xl px-4 py-3.5 flex items-center justify-center gap-3 text-center">
-      <span class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">LOGITECH</span>
-      <span class="text-sm font-extrabold text-white">G Pro X Wired</span>
-    </div>
-
-    <div class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1">
-      <div class="text-2xl sm:text-3xl font-black font-display text-white uppercase">
-        COMFORT <span class="text-gray-300 font-extrabold" data-i18n="hw_zone_word">ЗОНА</span>
-      </div>
-      <div class="flex items-baseline gap-2">
-        <span class="text-xs uppercase text-gray-400 font-semibold" data-i18n="hw_from">от</span>
-        <span class="text-3xl sm:text-4xl font-black font-display text-white">12 000</span>
-        <span class="text-[11px] uppercase text-gray-400 font-semibold leading-tight" data-i18n="hw_sum_hour">СУМ / ЧАС</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIP -->
-  <div id="hw-vip" class="hw-content hidden">
-    <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">AMD</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">Ryzen 7 7800X3D</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_cpu">процессор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">NVIDIA</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">GeForce RTX 5070 12 GB</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_gpu">видеокарта</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">ALIENWARE</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">500 Гц</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_monitor">монитор</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">DDR5</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">32 GB (2×16)</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_ram">оперативная память</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-sm font-extrabold text-white">GRAVASTAR Mercury K1</div>
-        <div class="text-[10px] text-gray-500 uppercase mt-0.5">VIP 1</div>
-        <div class="text-sm font-extrabold text-white mt-2">MCHOSE Mix 87</div>
-        <div class="text-[10px] text-gray-500 uppercase mt-0.5">VIP 2</div>
-      </div>
-
-      <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-4 text-center">
-        <div class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">LOGITECH</div>
-        <div class="text-sm sm:text-base font-extrabold text-white mt-1">G Pro X Superlight 2</div>
-        <div class="text-xs text-gray-500 mt-1" data-i18n="hw_mouse">мышь</div>
-      </div>
-    </div>
-
-    <div class="mt-3.5 bg-[#12141c] border border-gray-800/80 rounded-2xl px-4 py-3.5 flex items-center justify-center gap-3 text-center">
-      <span class="text-[11px] font-bold tracking-widest text-gray-400 uppercase">LOGITECH</span>
-      <span class="text-sm font-extrabold text-white">G Pro X 2 Lightspeed</span>
-    </div>
-
-    <div class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1">
-      <div class="text-2xl sm:text-3xl font-black font-display text-white uppercase">
-        VIP <span class="text-gray-300 font-extrabold" data-i18n="hw_zone_word">ЗОНА</span>
-      </div>
-      <div class="flex items-baseline gap-2">
-        <span class="text-xs uppercase text-gray-400 font-semibold" data-i18n="hw_from">от</span>
-        <span class="text-3xl sm:text-4xl font-black font-display text-white">20 000</span>
-        <span class="text-[11px] uppercase text-gray-400 font-semibold leading-tight" data-i18n="hw_sum_hour">СУМ / ЧАС</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-    <!-- СЕКЦИЯ АДРЕС И КОНТАКТЫ -->
-     <div class="text-center mb-8">
-  <h2
-    class="text-3xl md:text-4xl font-black font-display text-white tracking-wider uppercase"
-    data-i18n="address_title"
-  >
-    АДРЕС
-  </h2>
-  <p
-    class="text-sm text-gray-400 mt-2"
-    data-i18n="address_subtitle"
-  >
-    ТЦ Alfraganus, Ташкент — работаем круглосуточно 24/7
-  </p>
-</div>
-    <section class="address-section" id="address">
-      <div class="address-grid">
-        <!-- Стеклянная карточка с информацией -->
-        <div class="address-info-card">
-          <div class="info-group">
-            <span class="info-label" data-i18n="addr_label">📍 Наш адрес</span>
-            <h3 class="info-title" data-i18n="addr_city">г. Ташкент, Ферганское шоссе</h3>
-            <p class="info-desc" data-i18n="addr_landmark">Ориентир: рядом с Alfraganus</p>
+            <div
+              class="rounded-2xl border border-gray-800/80 bg-[#12141c] p-4 text-center"
+            >
+              <div
+                class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >
+                LOGITECH
+              </div>
+              <div class="mt-1 text-sm font-extrabold text-white sm:text-base">
+                G Pro X Superlight 2
+              </div>
+              <div class="mt-1 text-xs text-gray-500" data-i18n="hw_mouse">
+                мышь
+              </div>
+            </div>
           </div>
 
-          <div class="info-group">
-            <span class="info-label" data-i18n="hours_label">🕒 Режим работы</span>
-            <p class="info-status" data-i18n="hours_value">
-              <span class="status-dot"></span> Круглосуточно 24/7 (без выходных)
+          <div
+            class="mt-3.5 flex items-center justify-center gap-3 rounded-2xl border border-gray-800/80 bg-[#12141c] px-4 py-3.5 text-center"
+          >
+            <span
+              class="text-[11px] font-bold tracking-widest text-gray-400 uppercase"
+              >LOGITECH</span
+            >
+            <span class="text-sm font-extrabold text-white"
+              >G Pro X 2 Lightspeed</span
+            >
+          </div>
+
+          <div
+            class="mt-6 flex flex-wrap items-baseline justify-between gap-3 px-1"
+          >
+            <div
+              class="font-display text-2xl font-black text-white uppercase sm:text-3xl"
+            >
+              VIP
+              <span
+                class="font-extrabold text-gray-300"
+                data-i18n="hw_zone_word"
+                >ЗОНА</span
+              >
+            </div>
+            <div class="flex items-baseline gap-2">
+              <span
+                class="text-xs font-semibold text-gray-400 uppercase"
+                data-i18n="hw_from"
+                >от</span
+              >
+              <span
+                class="font-display text-3xl font-black text-white sm:text-4xl"
+                >20 000</span
+              >
+              <span
+                class="text-[11px] leading-tight font-semibold text-gray-400 uppercase"
+                data-i18n="hw_sum_hour"
+                >СУМ / ЧАС</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- СЕКЦИЯ АДРЕС И КОНТАКТЫ (С ТОЧКОЙ DOPA GAMING НА КАРТЕ) -->
+      <section class="address-section" id="address">
+        <div class="mb-8 text-center">
+          <h2
+            class="font-display text-3xl font-black tracking-wider text-white uppercase md:text-4xl"
+            data-i18n="address_title"
+          >
+            АДРЕС
+          </h2>
+          <p class="mt-2 text-sm text-gray-400" data-i18n="address_subtitle">
+            ТЦ Alfraganus, Ташкент — работаем круглосуточно 24/7
+          </p>
+        </div>
+
+        <div class="address-grid">
+          <!-- Стеклянная карточка с информацией -->
+          <div class="address-info-card">
+            <div class="info-group">
+              <span class="info-label" data-i18n="addr_label"
+                >📍 Наш адрес</span
+              >
+              <h3 class="info-title" data-i18n="addr_city">
+                г. Ташкент, ул. Кушкуприк, 30
+              </h3>
+              <p class="info-desc" data-i18n="addr_landmark">
+                Ориентир: ТРК Alfraganus (1-й этаж)
+              </p>
+            </div>
+
+            <div class="info-group">
+              <span class="info-label" data-i18n="hours_label"
+                >🕒 Режим работы</span
+              >
+              <p class="info-status" data-i18n="hours_value">
+                <span class="status-dot"></span> Круглосуточно 24/7 (без
+                выходных)
+              </p>
+            </div>
+
+            <!-- Кнопки быстрых действий -->
+            <div class="action-buttons-grid">
+              <a
+                href="https://yandex.com/maps/?rtext=~41.289425,69.295583&rtt=auto"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-action btn-yandex"
+                data-i18n="btn_yandex"
+              >
+                🧭 Маршрут в Яндекс
+              </a>
+              <a
+                href="tel:+998901234567"
+                class="btn-action btn-phone"
+                data-i18n="btn_call"
+              >
+                📞 Позвонить
+              </a>
+              <a
+                href="https://t.me/dopa_gaming"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-action btn-telegram"
+              >
+                ✈️ Telegram
+              </a>
+              <a
+                href="https://instagram.com/dopa.uz"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-action btn-instagram"
+              >
+                📸 Instagram
+              </a>
+            </div>
+          </div>
+
+          <!-- Карта Яндекс с точной точкой (пином) на DOPA Gaming -->
+          <div class="map-card">
+            <iframe
+              src="https://yandex.ru/map-widget/v1/?ll=69.295583%2C41.289425&z=17&pt=69.295583%2C41.289425%2Cpm2rdm"
+              width="100%"
+              height="100%"
+              frameborder="0"
+              allowfullscreen="true"
+              title="Компьютерный клуб DOPA Gaming на карте"
+              class="yandex-map"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <!-- СЕКЦИЯ ЗОНЫ -->
+      <section id="zones" class="mx-auto max-w-[90%] py-12">
+        <div class="mb-12 text-center">
+          <h2
+            class="mb-3 font-display text-4xl font-extrabold tracking-wider"
+            data-i18n="zones_title"
+          >
+            ЗОНЫ
+          </h2>
+          <p
+            class="text-xs tracking-widest text-gray-400 uppercase"
+            data-i18n="zones_subtitle"
+          >
+            Игровые пространства DOPA Gaming
+          </p>
+        </div>
+
+        <div class="space-y-10">
+          <!-- Зона MAIN -->
+          <div
+            class="space-y-6 rounded-2xl border border-gray-800/80 bg-[#12141c] p-6 shadow-xl sm:p-8"
+          >
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4"
+            >
+              <h3
+                class="font-display text-xl font-bold text-amber-500 sm:text-2xl"
+                data-i18n="zone_main_title"
+              >
+                Зал MAIN
+              </h3>
+              <span
+                class="rounded-full border border-amber-500/30 bg-amber-500/10 px-3.5 py-1.5 text-xs font-semibold text-amber-500"
+                data-i18n="badge_standard"
+                >Стандарт</span
+              >
+            </div>
+            <p
+              class="text-sm leading-relaxed text-gray-300"
+              data-i18n="zone_main_desc"
+            >
+              Просторный зал с мощными игровыми компьютерами для комфортных
+              ежедневных сессий, динамичных матчей и командной игры с друзьями.
             </p>
+            <ul class="space-y-3 pt-1 text-xs text-gray-400 sm:text-sm">
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-amber-500"
+                ></span>
+                <span data-i18n="zone_b1"
+                  >Современные производительные видеокарты и процессоры</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-amber-500"
+                ></span>
+                <span data-i18n="zone_b2"
+                  >Быстрые мониторы с высокой герцовкой</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-amber-500"
+                ></span>
+                <span data-i18n="zone_b3"
+                  >Удобные игровые кресла и качественная периферия</span
+                >
+              </li>
+            </ul>
           </div>
 
-          <!-- Кнопки быстрых действий -->
-          <div class="action-buttons-grid">
-            <a href="https://yandex.com/maps" target="_blank" rel="noopener noreferrer" class="btn-action btn-yandex" data-i18n="btn_yandex">
-              🧭 Маршрут в Яндекс
-            </a>
-            <a href="tel:+998901234567" class="btn-action btn-phone" data-i18n="btn_call">
-              📞 Позвонить
-            </a>
-            <a href="https://t.me/your_telegram" target="_blank" rel="noopener noreferrer" class="btn-action btn-telegram">
-              ✈️ Telegram
-            </a>
-            <a href="https://instagram.com/your_instagram" target="_blank" rel="noopener noreferrer" class="btn-action btn-instagram">
-              📸 Instagram
-            </a>
+          <!-- Зона COMFORT -->
+          <div
+            class="space-y-6 rounded-2xl border border-gray-800/80 bg-[#12141c] p-6 shadow-xl sm:p-8"
+          >
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4"
+            >
+              <h3
+                class="font-display text-xl font-bold text-emerald-400 sm:text-2xl"
+                data-i18n="zone_comfort_title"
+              >
+                Зал COMFORT
+              </h3>
+              <span
+                class="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3.5 py-1.5 text-xs font-semibold text-emerald-400"
+                data-i18n="badge_comfort"
+                >Повышенный комфорт</span
+              >
+            </div>
+            <p
+              class="text-sm leading-relaxed text-gray-300"
+              data-i18n="zone_comfort_desc"
+            >
+              Улучшенная зона для тех, кто ценит максимальное удобство во время
+              долгих игровых марафонов и киберспортивных тренировок.
+            </p>
+            <ul class="space-y-3 pt-1 text-xs text-gray-400 sm:text-sm">
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400"
+                ></span>
+                <span data-i18n="zone_c1"
+                  >Еще более мощное железо для максимального FPS</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400"
+                ></span>
+                <span data-i18n="zone_c2"
+                  >Эргономичные премиум-кресла с усиленной поддержкой</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-emerald-400"
+                ></span>
+                <span data-i18n="zone_c3"
+                  >Профессиональная игровая периферия</span
+                >
+              </li>
+            </ul>
+          </div>
+
+          <!-- Зона VIP -->
+          <div
+            class="relative space-y-8 overflow-hidden rounded-3xl border border-purple-500/30 bg-[#12141c] p-6 shadow-2xl sm:p-10 md:p-12"
+          >
+            <div
+              class="flex items-center justify-between border-b border-gray-800 pb-4"
+            >
+              <h3
+                class="font-display text-xl font-bold text-purple-400 sm:text-2xl"
+                data-i18n="zone_vip_title"
+              >
+                Зал VIP
+              </h3>
+              <span
+                class="rounded-full border border-purple-500/30 bg-purple-500/10 px-3.5 py-1.5 text-xs font-semibold text-purple-400"
+                data-i18n="badge_vip"
+                >Эксклюзив</span
+              >
+            </div>
+            <p
+              class="text-sm leading-relaxed text-gray-300"
+              data-i18n="zone_vip_desc"
+            >
+              Уединенное премиальное пространство с топовым железом без
+              компромиссов для максимального погружения в игру.
+            </p>
+            <ul class="space-y-3 pt-1 text-xs text-gray-400 sm:text-sm">
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-purple-400"
+                ></span>
+                <span data-i18n="zone_v1"
+                  >Флагманские компоненты и бескомпромиссная
+                  производительность</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-purple-400"
+                ></span>
+                <span data-i18n="zone_v2"
+                  >Премиальные девайсы и ультра-быстрые мониторы</span
+                >
+              </li>
+              <li class="flex items-center gap-3">
+                <span
+                  class="h-2 w-2 flex-shrink-0 rounded-full bg-purple-400"
+                ></span>
+                <span data-i18n="zone_v3"
+                  >Повышенная приватность и атмосферная подсветка</span
+                >
+              </li>
+            </ul>
           </div>
         </div>
+      </section>
+    </main>
 
-        <!-- Карта Яндекс -->
-        <div class="map-card">
-          <iframe
-            src="https://yandex.ru/map-widget/v1/?ll=69.310000%2C41.280000&z=15"
-            width="100%"
-            height="100%"
-            frameborder="0"
-            allowfullscreen="true"
-            title="Карта DOPA Gaming"
-            class="yandex-map"
-          ></iframe>
+    <!-- ФУТЕР -->
+    <footer class="relative z-10 mx-auto my-16 max-w-5xl px-4 pb-12">
+      <div
+        class="flex flex-col items-center justify-between gap-4 rounded-2xl border border-gray-800/80 bg-[#12141c] px-5 py-4 shadow-2xl md:flex-row md:px-7 md:py-5"
+      >
+        <!-- Логотип -->
+        <a href="#" class="flex shrink-0 items-center gap-2 whitespace-nowrap">
+          <span
+            class="font-display text-lg font-black tracking-wider text-white md:text-xl"
+          >
+            DOPA <span class="text-amber-500">GAMING</span>
+          </span>
+          <span
+            class="rounded-full border border-amber-500/30 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold text-amber-500"
+            >24/7</span
+          >
+        </a>
+
+        <!-- Навигация -->
+        <nav
+          class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs font-medium text-gray-400"
+        >
+          <a
+            href="#prices"
+            class="whitespace-nowrap transition-colors hover:text-amber-400"
+            data-i18n="nav_prices"
+            >Цены</a
+          >
+          <a
+            href="#bonuses"
+            class="whitespace-nowrap transition-colors hover:text-amber-400"
+            data-i18n="nav_bonuses"
+            >Бонусы</a
+          >
+          <a
+            href="#zones"
+            class="whitespace-nowrap transition-colors hover:text-amber-400"
+            data-i18n="nav_zones"
+            >Зоны</a
+          >
+          <a
+            href="#hardware"
+            class="whitespace-nowrap transition-colors hover:text-amber-400"
+            data-i18n="nav_hardware"
+            >Железо</a
+          >
+          <a
+            href="https://2gis.uz/tashkent/firm/70000001113329599"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="whitespace-nowrap transition-colors hover:text-amber-400"
+            data-i18n="footer_mall"
+          >
+            ТЦ Alfraganus
+          </a>
+        </nav>
+
+        <!-- Соцсети и бронь -->
+        <div class="flex shrink-0 items-center gap-2.5">
+          <a
+            href="https://instagram.com/dopa.uz"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl bg-gray-800/60 px-3 py-2 text-xs font-semibold whitespace-nowrap text-gray-300 transition hover:bg-gray-700/60"
+          >
+            Instagram
+          </a>
+          <a
+            href="https://t.me/dopa_gaming"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="rounded-xl bg-amber-500 px-4 py-2 text-xs font-bold whitespace-nowrap text-black shadow-lg shadow-amber-500/20 transition hover:bg-amber-600"
+            data-i18n="btn_book"
+          >
+            Забронировать
+          </a>
         </div>
       </div>
-    </section>
+    </footer>
 
-    <!-- СЕКЦИЯ ЗОНЫ -->
-    <section id="zones" class="max-w-[90%] mx-auto py-12">
-      <div class="text-center mb-12">
-        <h2 class="text-4xl font-extrabold font-display tracking-wider mb-3" data-i18n="zones_title">ЗОНЫ</h2>
-        <p class="text-xs text-gray-400 tracking-widest uppercase" data-i18n="zones_subtitle">
-          Игровые пространства DOPA Gaming
-        </p>
-      </div>
-
-      <div class="space-y-10">
-        <!-- Зона MAIN -->
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-8 shadow-xl space-y-6 mt-12">
-          <div class="flex items-center justify-between border-b border-gray-800 pb-4">
-            <h3 class="text-2xl font-bold text-amber-500 font-display" data-i18n="zone_main_title">Зал MAIN</h3>
-            <span class="text-xs bg-amber-500/10 text-amber-500 border border-amber-500/30 px-3.5 py-1.5 rounded-full font-semibold" data-i18n="badge_standard">Стандарт</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed" data-i18n="zone_main_desc">
-            Просторный зал с мощными игровыми компьютерами для комфортных ежедневных сессий, динамичных матчей и командной игры с друзьями.
-          </p>
-          <ul class="text-xs text-gray-400 space-y-3 pt-1">
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0"></span>
-              <span data-i18n="zone_b1">Современные производительные видеокарты и процессоры</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0"></span>
-              <span data-i18n="zone_b2">Быстрые мониторы с высокой герцовкой</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-amber-500 flex-shrink-0"></span>
-              <span data-i18n="zone_b3">Удобные игровые кресла и качественная периферия</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Зона COMFORT -->
-        <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl p-8 shadow-xl space-y-6 mt-12">
-          <div class="flex items-center justify-between border-b border-gray-800 pb-4">
-            <h3 class="text-2xl font-bold text-emerald-400 font-display" data-i18n="zone_comfort_title">Зал COMFORT</h3>
-            <span class="text-xs bg-emerald-400/10 text-emerald-400 border border-emerald-400/30 px-3.5 py-1.5 rounded-full font-semibold" data-i18n="badge_comfort">Повышенный комфорт</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed" data-i18n="zone_comfort_desc">
-            Улучшенная зона для тех, кто ценит максимальное удобство во время долгих игровых марафонов и киберспортивных тренировок.
-          </p>
-          <ul class="text-xs text-gray-400 space-y-3 pt-1">
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
-              <span data-i18n="zone_c1">Еще более мощное железо для максимального FPS</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
-              <span data-i18n="zone_c2">Эргономичные премиум-кресла с усиленной поддержкой</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 flex-shrink-0"></span>
-              <span data-i18n="zone_c3">Профессиональная игровая периферия</span>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Зона VIP -->
-        <div class="bg-[#12141c] border border-purple-500/30 rounded-3xl p-10 md:p-12 shadow-2xl relative overflow-hidden space-y-8 mt-12">
-          <div class="flex items-center justify-between border-b border-gray-800 pb-4">
-            <h3 class="text-2xl font-bold text-purple-400 font-display" data-i18n="zone_vip_title">Зал VIP</h3>
-            <span class="text-xs bg-purple-500/10 text-purple-400 border border-purple-500/30 px-3.5 py-1.5 rounded-full font-semibold" data-i18n="badge_vip">Эксклюзив</span>
-          </div>
-          <p class="text-sm text-gray-300 leading-relaxed" data-i18n="zone_vip_desc">
-            Уединенное премиальное пространство с топовым железом без компромиссов для максимального погружения в игру.
-          </p>
-          <ul class="text-xs text-gray-400 space-y-3 pt-1">
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0"></span>
-              <span data-i18n="zone_v1">Флагманские компоненты и бескомпромиссная производительность</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0"></span>
-              <span data-i18n="zone_v2">Премиальные девайсы и ультра-быстрые мониторы</span>
-            </li>
-            <li class="flex items-center gap-3">
-              <span class="w-2 h-2 rounded-full bg-purple-400 flex-shrink-0"></span>
-              <span data-i18n="zone_v3">Повышенная приватность и атмосферная подсветка</span>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-   <!-- ФУТЕР -->
-<footer class="relative z-10 my-16 pb-12 px-4 max-w-5xl mx-auto">
-  <div class="bg-[#12141c] border border-gray-800/80 rounded-2xl px-5 py-4 md:px-7 md:py-5 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4">
-    <!-- Логотип -->
-    <a href="#" class="flex items-center gap-2 shrink-0 whitespace-nowrap">
-      <span class="text-lg md:text-xl font-black font-display text-white tracking-wider">
-        DOPA <span class="text-amber-500">GAMING</span>
-      </span>
-      <span class="text-[10px] bg-amber-500/10 text-amber-500 border border-amber-500/30 px-2 py-0.5 rounded-full font-bold">24/7</span>
-    </a>
-
-    <!-- Навигация -->
-    <nav class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-gray-400 font-medium">
-      <a href="#prices" class="whitespace-nowrap hover:text-amber-400 transition-colors" data-i18n="nav_prices">Цены</a>
-      <a href="#bonuses" class="whitespace-nowrap hover:text-amber-400 transition-colors" data-i18n="nav_bonuses">Бонусы</a>
-      <a href="#zones" class="whitespace-nowrap hover:text-amber-400 transition-colors" data-i18n="nav_zones">Зоны</a>
-      <a href="#hardware" class="whitespace-nowrap hover:text-amber-400 transition-colors" data-i18n="nav_hardware">Железо</a>
-      <a href="https://2gis.uz/tashkent/firm/70000001113329599" target="_blank" rel="noopener noreferrer" class="whitespace-nowrap hover:text-amber-400 transition-colors" data-i18n="footer_mall">
-        ТЦ Alfraganus
-      </a>
-    </nav>
-
-    <!-- Соцсети и бронь -->
-    <div class="flex items-center gap-2.5 shrink-0">
-      <a href="https://instagram.com/dopa.uz" target="_blank" rel="noopener noreferrer" class="px-3 py-2 bg-gray-800/60 hover:bg-gray-700/60 rounded-xl text-gray-300 transition text-xs font-semibold whitespace-nowrap">
-        Instagram
-      </a>
-      <a href="https://t.me/your_bot" target="_blank" rel="noopener noreferrer" class="px-4 py-2 bg-amber-500 hover:bg-amber-600 text-black font-bold rounded-xl text-xs transition shadow-lg shadow-amber-500/20 whitespace-nowrap">
-        Забронировать
-      </a>
-    </div>
-  </div>
-</footer>
-
-    <main id="app"></main>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

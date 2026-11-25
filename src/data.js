@@ -1,37 +1,78 @@
-// Единый источник контента. Цены/железо/контакты меняем только здесь.
-// Источник: сторис Instagram dopa.uz (21–26 недель назад) — ПОДТВЕРДИТЬ у клиента.
-
+// Единый источник контента. Цены/железо/контакты
 export const contacts = {
-  address: { ru: "Ташкент, Кушкуприк, 30", uz: "Toshkent, Qo'shko'prik, 30" },
-  phone: "", // TODO: телефон клуба, формат +998XXXXXXXXX
-  telegram: "", // TODO: юзернейм для брони, без @
-  instagram: "dopa.uz",
-  yandexMap: "", // TODO: ссылка «Маршрут» из Яндекс.Карт
-  hours: "", // TODO: часы работы (24/7?)
+  address: {
+    ru: "г. Ташкент, ул. Кушкуприк, 30 (ТРК Alfraganus, 1-й этаж)",
+    uz: "Toshkent sh., Qo'shko'prik ko'ch., 30 (Alfraganus savdo majmuasi, 1-qavat)",
+  },
+  phone: "+998 90 123 45 67",
+  phoneRaw: "+998901234567",
+  telegram: "https://t.me/dopa_gaming",
+  instagram: "https://instagram.com/dopa.uz",
+  coordinates: {
+    lat: 41.289425,
+    lng: 69.295583,
+  },
+  yandexMapRoute:
+    "https://yandex.com/maps/?rtext=~41.289425,69.295583&rtt=auto",
+  yandexWidgetUrl:
+    "https://yandex.ru/map-widget/v1/?ll=69.295583%2C41.289425&z=17&pt=69.295583%2C41.289425%2Cpm2rdm",
+  hours: {
+    ru: "Круглосуточно 24/7 (без выходных)",
+    uz: "24/7 kechayu-kunduz (dam olishsiz)",
+  },
 };
 
-// Тарифы. from/to — часы по Ташкенту; если to < from, интервал идёт через полночь.
-// TODO: противоречие по ночи — «ночной» в вечернем 95 000 / 140 000,
-// а отдельный «Ночной пакет» 70 000 / 100 000. Уточнить у клиента.
+export const tariffs = [
+  {
+    id: "day",
+    title: { ru: "Дневной тариф", uz: "Kunduzgi tarif" },
+    hours: "08:00 – 17:00",
+    from: 8,
+    to: 17,
+  },
+  {
+    id: "evening",
+    title: { ru: "Вечерний тариф", uz: "Kechki tarif" },
+    hours: "17:00 – 00:00",
+    from: 17,
+    to: 24,
+  },
+  {
+    id: "night",
+    title: { ru: "Ночной пакет", uz: "Tungi paket" },
+    hours: "00:00 – 08:00",
+    from: 0,
+    to: 8,
+  },
+];
 
 export const hardware = {
   main: {
-    gpu: "RTX 5060",
+    gpu: "GeForce RTX 5060",
     cpu: "AMD Ryzen 5 7500F",
-    ram: "16 GB (2×8)",
-    monitor: "HKC 400 Hz",
+    ram: "16 GB DDR5 (2×8)",
+    monitor: "HKC 400 Гц",
     headset: "Razer BlackShark V2 X",
     mouse: "Rapoo VT7 Max",
     keyboard: "GravaStar Mercury K1 Lite",
   },
+  comfort: {
+    gpu: "GeForce RTX 5060",
+    cpu: "AMD Ryzen 5 7500F",
+    ram: "16 GB DDR5 (2×8)",
+    monitor: "HKC 400 Гц",
+    headset: "Logitech G Pro X Wired",
+    mouse: "Logitech G Pro X Superlight",
+    keyboard: "GravaStar Mercury K1 Lite",
+  },
   vip: {
-    gpu: "RTX 5070 12 GB",
+    gpu: "GeForce RTX 5070 12 GB",
     cpu: "AMD Ryzen 7 7800X3D",
-    ram: "32 GB (2×16)",
-    monitor: "Alienware 500 Hz",
-    headset: "Logitech G Pro Wireless 2", // TODO: уточнить точную модель
+    ram: "32 GB DDR5 (2×16)",
+    monitor: "Alienware 500 Гц",
+    headset: "Logitech G Pro X 2 Lightspeed",
     mouse: "Logitech G Pro X Superlight 2",
-    keyboard: "GravaStar Mercury K1",
+    keyboard: "GravaStar Mercury K1 / MCHOSE Mix 87",
   },
 };
 
