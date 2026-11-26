@@ -9,13 +9,13 @@ export const contacts = {
   telegram: "https://t.me/dopa_gaming",
   instagram: "https://instagram.com/dopa.uz",
   coordinates: {
-    lat: 41.289425,
-    lng: 69.295583,
+    lat: 41.28921,
+    lng: 69.296454,
   },
-  yandexMapRoute:
-    "https://yandex.com/maps/?rtext=~41.289425,69.295583&rtt=auto",
+  yandexOrgUrl: "https://yandex.uz/maps/org/19695614733",
+  yandexMapRoute: "https://yandex.uz/maps/org/19695614733",
   yandexWidgetUrl:
-    "https://yandex.ru/map-widget/v1/?ll=69.295583%2C41.289425&z=17&pt=69.295583%2C41.289425%2Cpm2rdm",
+    "https://yandex.ru/map-widget/v1/org/19695614733?ll=69.296454%2C41.289210&z=17",
   hours: {
     ru: "Круглосуточно 24/7 (без выходных)",
     uz: "24/7 kechayu-kunduz (dam olishsiz)",
