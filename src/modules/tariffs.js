@@ -26,7 +26,9 @@ export function updateTariffBanner() {
   const lang = getLang();
   const title = current.title[lang] || current.title.ru;
   const prefix = lang === "uz" ? "Hozir amalda" : "Сейчас действует";
-  const text = `${prefix}: ${title} (${current.hours})`;
+  // Заменяем пробелы на неразрывные пробелы (\u00A0), чтобы время (00:00 – 08:00) всегда оставалось на одной строке
+  const hoursFormatted = current.hours.replace(/ /g, "\u00A0");
+  const text = `${prefix}: ${title} (${hoursFormatted})`;
 
   document.querySelectorAll(".tariff-text").forEach((el) => {
     el.textContent = text;

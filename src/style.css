@@ -285,19 +285,26 @@
 /* Плашка тарифа под шапкой */
 .tariff-status-section {
   max-width: 1280px;
-  margin: 16px auto 0 auto;
-  padding: 0 16px;
+  margin: 12px auto 0 auto;
+  padding: 0 12px;
 }
 
 .tariff-banner {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 10px 20px;
-  font-size: 0.9rem;
-  font-weight: 500;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: clamp(0.72rem, 3.2vw, 0.875rem);
+  font-weight: 600;
   color: var(--accent-gold);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tariff-text {
+  white-space: nowrap;
 }
 
 .pulse-dot {
@@ -349,7 +356,7 @@
 .hero-bg {
   position: absolute;
   inset: 0;
-  background-image: url("https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070&auto=format&fit=crop");
+  background-image: url("/dopa-interior.jpg");
   background-size: cover;
   background-position: center;
   filter: blur(8px) brightness(0.35);
@@ -469,14 +476,30 @@
 .tariff-pill {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 8px;
   background: rgba(0, 0, 0, 0.4);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 10px 22px;
+  padding: 8px 16px;
   border-radius: 9999px;
-  font-size: 0.875rem;
+  font-size: clamp(0.72rem, 3.2vw, 0.85rem);
   color: var(--accent-gold);
   font-weight: 600;
+  white-space: nowrap;
+  max-width: 100%;
+}
+
+@media (max-width: 480px) {
+  .tariff-banner {
+    padding: 6px 8px;
+    font-size: clamp(0.66rem, 2.9vw, 0.8rem);
+    gap: 6px;
+  }
+  .tariff-pill {
+    padding: 6px 12px;
+    font-size: clamp(0.66rem, 2.9vw, 0.8rem);
+    gap: 6px;
+  }
 }
 
 @media (max-width: 768px) {
